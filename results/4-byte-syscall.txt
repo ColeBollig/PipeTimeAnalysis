@@ -1,0 +1,184 @@
+sudo dtruss -a ./test_pipe
+	PID/THRD  RELATIVE  ELAPSD    CPU SYSCALL(args) 		 = return
+ 1745/0x88c0:       118:      0:     0 fork()		 = 0 0
+ 1745/0x88c0:       125      34      7 munmap(0x10258C000, 0x8C000)		 = 0 0
+ 1745/0x88c0:       128       3      2 munmap(0x102618000, 0x8000)		 = 0 0
+ 1745/0x88c0:       130       2      1 munmap(0x102620000, 0x4000)		 = 0 0
+ 1745/0x88c0:       132       2      1 munmap(0x102624000, 0x4000)		 = 0 0
+ 1745/0x88c0:       133       1      1 munmap(0x102628000, 0x50000)		 = 0 0
+ 1745/0x88c0:       149       1      0 crossarch_trap(0x0, 0x0, 0x0)		 = -1 Err#45
+ 1745/0x88c0:       178      28     27 open(".\0", 0x100000, 0x0)		 = 3 0
+ 1745/0x88c0:       181       3      2 fcntl(0x3, 0x32, 0x16DB07338)		 = 0 0
+ 1745/0x88c0:       183       2      1 close(0x3)		 = 0 0
+ 1745/0x88c0:       191      34      6 fsgetpath(0x16DB07348, 0x400, 0x16DB07328)		 = 60 0
+ 1745/0x88c0:       203      12     11 fsgetpath(0x16DB07358, 0x400, 0x16DB07338)		 = 14 0
+ 1745/0x88c0:       209       1      0 csrctl(0x0, 0x16DB0775C, 0x4)		 = -1 Err#1
+ 1745/0x88c0:       212       4      2 __mac_syscall(0x18A245ACF, 0x2, 0x16DB076A0)		 = 0 0
+ 1745/0x88c0:       213       0      0 csrctl(0x0, 0x16DB0774C, 0x4)		 = -1 Err#1
+ 1745/0x88c0:       216       2      2 __mac_syscall(0x18A242902, 0x5A, 0x16DB076E0)		 = 0 0
+ 1745/0x88c0:       229       7      5 sysctl([unknown, 3, 0, 0, 0, 0] (2), 0x16DB06C68, 0x16DB06C60, 0x18A244553, 0xD)		 = 0 0
+Parent (1746): Time to write 4 bytes 9042 nanoseconds
+Child  (1745): Time to read 4 bytes 226667 nanoseconds
+ 1745/0x88c0:       231       2      1 sysctl([CTL_KERN, 140, 0, 0, 0, 0] (2), 0x16DB06D18, 0x16DB06D10, 0x0, 0x0)		 = 0 0
+ 1745/0x88c0:       238       5      4 open("/\0", 0x20100000, 0x0)		 = 3 0
+ 1745/0x88c0:       254      17     15 openat(0x3, "System/Cryptexes/OS\0", 0x100000, 0x0)		 = 4 0
+ 1745/0x88c0:       256       1      0 dup(0x4, 0x0, 0x0)		 = 5 0
+ 1745/0x88c0:       261       6      5 fstatat64(0x4, 0x16DB067F1, 0x16DB06760)		 = 0 0
+ 1745/0x88c0:       267       6      4 openat(0x4, "System/Library/dyld/\0", 0x100000, 0x0)		 = 6 0
+ 1745/0x88c0:       269       2      1 fcntl(0x6, 0x32, 0x16DB067F0)		 = 0 0
+ 1745/0x88c0:       269       0      0 dup(0x6, 0x0, 0x0)		 = 7 0
+ 1745/0x88c0:       270       0      0 dup(0x5, 0x0, 0x0)		 = 8 0
+ 1745/0x88c0:       271       1      0 close(0x3)		 = 0 0
+ 1745/0x88c0:       271       0      0 close(0x5)		 = 0 0
+ 1745/0x88c0:       272       0      0 close(0x4)		 = 0 0
+ 1745/0x88c0:       272       0      0 close(0x6)		 = 0 0
+ 1745/0x88c0:       274       2      1 __mac_syscall(0x18A245ACF, 0x2, 0x16DB071E0)		 = 0 0
+ 1745/0x88c0:       276       3      1 shared_region_check_np(0x16DB06E00, 0x0, 0x0)		 = 0 0
+ 1745/0x88c0:       280       3      2 fsgetpath(0x16DB07360, 0x400, 0x16DB072A8)		 = 82 0
+ 1745/0x88c0:       282       1      0 fcntl(0x8, 0x32, 0x16DB07360)		 = 0 0
+ 1745/0x88c0:       283       0      0 close(0x8)		 = 0 0
+ 1745/0x88c0:       283       0      0 close(0x7)		 = 0 0
+ 1745/0x88c0:       289       3      2 getfsstat64(0x0, 0x0, 0x2)		 = 10 0
+ 1745/0x88c0:       296       7      6 getfsstat64(0x10270EAA0, 0x54B0, 0x2)		 = 10 0
+ 1745/0x88c0:       302       6      4 getattrlist("/\0", 0x16DB07290, 0x16DB07200)		 = 0 0
+ 1745/0x88c0:       316       9      8 stat64("/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e\0", 0x16DB075F0, 0x0)		 = 0 0
+dtrace: error on enabled probe ID 1690 (ID 845: syscall::stat64:return): invalid address (0x0) in action #12 at DIF offset 12
+ 1745/0x88c0:       358      29      3 stat64("/Users/cole/Desktop/school/UWM_Fall_2025/warmup-2/test_pipe\0", 0x16DB06AA0, 0x0)		 = 0 0
+ 1745/0x88c0:       381      23     21 open("/Users/cole/Desktop/school/UWM_Fall_2025/warmup-2/test_pipe\0", 0x0, 0x0)		 = 3 0
+ 1745/0x88c0:       388       9      7 mmap(0x0, 0xB698, 0x1, 0x40002, 0x3, 0x0)		 = 0x102750000 0
+ 1745/0x88c0:       389       1      0 fcntl(0x3, 0x32, 0x16DB06BB8)		 = 0 0
+ 1745/0x88c0:       390       1      0 close(0x3)		 = 0 0
+ 1745/0x88c0:       393       2      1 munmap(0x102750000, 0xB698)		 = 0 0
+ 1745/0x88c0:       395       2      1 stat64("/Users/cole/Desktop/school/UWM_Fall_2025/warmup-2/test_pipe\0", 0x16DB07010, 0x0)		 = 0 0
+ 1745/0x88c0:       417       3      2 stat64("/usr/lib/libc++.1.dylib\0", 0x16DB05F50, 0x0)		 = -1 Err#2
+ 1745/0x88c0:       423       3      2 stat64("/System/Volumes/Preboot/Cryptexes/OS/usr/lib/libc++.1.dylib\0", 0x16DB05F00, 0x0)		 = -1 Err#2
+ 1745/0x88c0:       457       2      1 stat64("/usr/lib/system/libdispatch.dylib\0", 0x16DB03B70, 0x0)		 = -1 Err#2
+ 1745/0x88c0:       458       1      1 stat64("/System/Volumes/Preboot/Cryptexes/OS/usr/lib/system/libdispatch.dylib\0", 0x16DB03B20, 0x0)		 = -1 Err#2
+ 1745/0x88c0:       459       1      0 stat64("/usr/lib/system/libdispatch.dylib\0", 0x16DB03B70, 0x0)		 = -1 Err#2
+ 1745/0x88c0:       472       1      0 stat64("/usr/lib/libSystem.B.dylib\0", 0x16DB05F50, 0x0)		 = -1 Err#2
+ 1745/0x88c0:       475       1      0 stat64("/System/Volumes/Preboot/Cryptexes/OS/usr/lib/libSystem.B.dylib\0", 0x16DB05F00, 0x0)		 = -1 Err#2
+ 1745/0x88c0:       585      51     27 open("/dev/dtracehelper\0", 0x2, 0x0)		 = 3 0
+ 1745/0x88c0:       842     257    256 ioctl(0x3, 0x80086804, 0x16DB05B48)		 = 0 0
+ 1745/0x88c0:       844       2      1 close(0x3)		 = 0 0
+ 1745/0x88c0:       974      11     11 open("/Users/cole/Desktop/school/UWM_Fall_2025/warmup-2/test_pipe\0", 0x0, 0x0)		 = 3 0
+ 1745/0x88c0:       977       3      2 __mac_syscall(0x18A245ACF, 0x2, 0x16DB05250)		 = 0 0
+ 1745/0x88c0:       988      10      9 map_with_linking_np(0x16DB04F80, 0x1, 0x16DB04FB0)		 = 0 0
+ 1745/0x88c0:       988       0      0 close(0x3)		 = 0 0
+ 1745/0x88c0:       990       2      1 mprotect(0x1022FC000, 0x4000, 0x1)		 = 0 0
+ 1745/0x88c0:      1012       2      0 shared_region_check_np(0xFFFFFFFFFFFFFFFF, 0x0, 0x0)		 = 0 0
+ 1745/0x88c0:      1014       1      1 mprotect(0x10270C000, 0x40000, 0x1)		 = 0 0
+ 1745/0x88c0:      1026       3      1 access("/AppleInternal/XBS/.isChrooted\0", 0x0, 0x0)		 = -1 Err#2
+ 1745/0x88c0:      1041       2      1 bsdthread_register(0x18A548D2C, 0x18A548D20, 0x4000)		 = 1073746399 0
+ 1745/0x88c0:      1066       1      0 getpid(0x0, 0x0, 0x0)		 = 1745 0
+ 1745/0x88c0:      1069       3      2 shm_open(0x18A3E3F51, 0x0, 0xFFFFFFFF8A506C90)		 = 3 0
+ 1745/0x88c0:      1070       1      0 fstat64(0x3, 0x16DB05EE0, 0x0)		 = 0 0
+ 1745/0x88c0:      1074       4      2 mmap(0x0, 0x4000, 0x1, 0x40001, 0x3, 0x0)		 = 0x102758000 0
+ 1745/0x88c0:      1076       1      0 close(0x3)		 = 0 0
+ 1745/0x88c0:      1083       1      0 ioctl(0x2, 0x4004667A, 0x16DB05F8C)		 = 0 0
+ 1745/0x88c0:      1091       1      0 mprotect(0x102764000, 0x4000, 0x0)		 = 0 0
+ 1745/0x88c0:      1092       1      0 mprotect(0x102770000, 0x4000, 0x0)		 = 0 0
+ 1745/0x88c0:      1096       1      0 mprotect(0x102774000, 0x4000, 0x0)		 = 0 0
+ 1745/0x88c0:      1097       1      0 mprotect(0x102780000, 0x4000, 0x0)		 = 0 0
+ 1745/0x88c0:      1100       0      0 mprotect(0x102784000, 0x4000, 0x0)		 = 0 0
+ 1745/0x88c0:      1100       1      0 mprotect(0x102790000, 0x4000, 0x0)		 = 0 0
+ 1745/0x88c0:      1105       1      0 mprotect(0x10275C000, 0xA0, 0x1)		 = 0 0
+ 1745/0x88c0:      1106       1      0 mprotect(0x10275C000, 0xA0, 0x3)		 = 0 0
+ 1745/0x88c0:      1108       1      0 mprotect(0x10275C000, 0xA0, 0x1)		 = 0 0
+ 1745/0x88c0:      1111       1      0 mprotect(0x102794000, 0x4000, 0x1)		 = 0 0
+ 1745/0x88c0:      1114       1      0 mprotect(0x102798000, 0xA0, 0x1)		 = 0 0
+ 1745/0x88c0:      1119       1      0 mprotect(0x102798000, 0xA0, 0x3)		 = 0 0
+ 1745/0x88c0:      1121       1      0 mprotect(0x102798000, 0xA0, 0x1)		 = 0 0
+ 1745/0x88c0:      1122       1      0 mprotect(0x10275C000, 0xA0, 0x3)		 = 0 0
+ 1745/0x88c0:      1124       1      0 mprotect(0x10275C000, 0xA0, 0x1)		 = 0 0
+ 1745/0x88c0:      1124       1      0 mprotect(0x102794000, 0x4000, 0x3)		 = 0 0
+ 1745/0x88c0:      1126       1      0 mprotect(0x102794000, 0x4000, 0x1)		 = 0 0
+ 1745/0x88c0:      1127       1      0 mprotect(0x10270C000, 0x40000, 0x3)		 = 0 0
+ 1745/0x88c0:      1130       1      0 mprotect(0x10270C000, 0x40000, 0x1)		 = 0 0
+ 1745/0x88c0:      1140       1      0 objc_bp_assist_cfg_np(0x18A175000, 0x80000018001C1048, 0x0)		 = -1 Err#5
+ 1745/0x88c0:      1142       1      0 issetugid(0x0, 0x0, 0x0)		 = 0 0
+ 1745/0x88c0:      1159       1      0 mprotect(0x10270C000, 0x40000, 0x3)		 = 0 0
+ 1745/0x88c0:      1197      10      9 getentropy(0x16DB055F8, 0x20, 0x0)		 = 0 0
+ 1745/0x88c0:      1225       1      0 mprotect(0x10270C000, 0x40000, 0x1)		 = 0 0
+ 1745/0x88c0:      1240       1      0 mprotect(0x10270C000, 0x40000, 0x3)		 = 0 0
+ 1745/0x88c0:      1243       1      0 mprotect(0x10270C000, 0x40000, 0x1)		 = 0 0
+ 1745/0x88c0:      1249       5      4 getattrlist("/Users/cole/Desktop/school/UWM_Fall_2025/warmup-2/test_pipe\0", 0x16DB05E70, 0x16DB05E88)		 = 0 0
+ 1745/0x88c0:      1259       9      8 access("/Users/cole/Desktop/school/UWM_Fall_2025/warmup-2\0", 0x4, 0x0)		 = 0 0
+ 1745/0x88c0:      1266       7      6 open("/Users/cole/Desktop/school/UWM_Fall_2025/warmup-2\0", 0x0, 0x0)		 = 3 0
+ 1745/0x88c0:      1267       1      0 fstat64(0x3, 0x130E04430, 0x0)		 = 0 0
+ 1745/0x88c0:      1268       1      0 csrctl(0x0, 0x16DB0609C, 0x4)		 = -1 Err#1
+ 1745/0x88c0:      1272       4      3 fgetattrlist(0x3, 0x16DB06140, 0x16DB060C0)		 = 0 0
+ 1745/0x88c0:      1283      11     10 __mac_syscall(0x19581F652, 0x2, 0x16DB060C0)		 = 0 0
+ 1745/0x88c0:      1284       1      0 fcntl(0x3, 0x32, 0x16DB05D58)		 = 0 0
+ 1745/0x88c0:      1285       1      0 close(0x3)		 = 0 0
+ 1745/0x88c0:      1289       2      1 open("/Users/cole/Desktop/school/UWM_Fall_2025/warmup-2/Info.plist\0", 0x0, 0x0)		 = -1 Err#2
+ 1745/0x88c0:      1298       1      0 proc_info(0x2, 0x6D1, 0xD)		 = 64 0
+ 1745/0x88c0:      1309       2      1 csops_audittoken(0x6D1, 0x10, 0x16DB060E0)		 = 0 0
+ 1745/0x88c0:      1318       5      4 sysctl([unknown, 3, 0, 0, 0, 0] (2), 0x16DB06438, 0x16DB06430, 0x18D97AD3D, 0x15)		 = 0 0
+ 1745/0x88c0:      1319       1      1 sysctl([CTL_KERN, 138, 0, 0, 0, 0] (2), 0x16DB064C8, 0x16DB064C0, 0x0, 0x0)		 = 0 0
+ 1745/0x88c0:      1321       1      0 csops(0x6D1, 0x0, 0x16DB0656C)		 = 0 0
+ 1745/0x88c0:      1324       1      0 mprotect(0x10270C000, 0x40000, 0x3)		 = 0 0
+ 1745/0x88c0:      1382       4      3 pipe(0x0, 0x0, 0x0)		 = 3 0
+ 1745/0x88c0:      1642     249    248 fork()		 = 1746 0
+ 1746/0x88e6:        26:      0:     0 fork()		 = 0 0
+ 1745/0x88c0:      1687       1      0 close(0x4)		 = 0 0
+ 1746/0x88e6:        27      23      0 thread_selfid(0x0, 0x0, 0x0)		 = 35046 0
+ 1746/0x88e6:        27       1      0 bsdthread_register(0x18A548D2C, 0x18A548D20, 0x4000)		 = -1 Err#22
+ 1746/0x88e6:        30       2      1 mprotect(0x102798000, 0xA0, 0x3)		 = 0 0
+ 1746/0x88e6:        33       1      0 mprotect(0x102798000, 0xA0, 0x1)		 = 0 0
+ 1746/0x88e6:       152       1      0 close(0x3)		 = 0 0
+ 1746/0x88e6:       157       4      3 write(0x4, "----\0", 0x4)		 = 4 0
+ 1746/0x88e6:       158       1      0 getpid(0x0, 0x0, 0x0)		 = 1746 0
+ 1745/0x88c0:      1695     164      6 read(0x3, "----\0", 0x4)		 = 4 0
+ 1746/0x88e6:       160       1      0 getrlimit(0x1008, 0x16DB07438, 0x0)		 = 0 0
+ 1746/0x88e6:       162       2      1 fstat64(0x1, 0x16DB07430, 0x0)		 = 0 0
+ 1746/0x88e6:       164       1      0 ioctl(0x1, 0x4004667A, 0x16DB0747C)		 = 0 0
+ 1746/0x88e6:       168       4      3 write_nocancel(0x1, "Parent (1746): Time to write 4 bytes 9042 nanoseconds\n\0", 0x36)		 = 54 0
+ 1746/0x88e6:       170       2      1 close(0x4)		 = 0 0
+ 1745/0x88c0:      1711      54     15 read(0x3, "\0", 0x4)		 = 0 0
+ 1745/0x88c0:      1716       1      0 getrlimit(0x1008, 0x16DB07438, 0x0)		 = 0 0
+ 1745/0x88c0:      1718       2      1 fstat64(0x1, 0x16DB07430, 0x0)		 = 0 0
+ 1745/0x88c0:      1721       1      0 ioctl(0x1, 0x4004667A, 0x16DB0747C)		 = 0 0
+ 1745/0x88c0:      1728       3      2 write_nocancel(0x1, "Child  (1745): Time to read 4 bytes 226667 nanoseconds\n\0", 0x37)		 = 55 0
+ 1745/0x88c0:      1730       2      1 close(0x3)		 = 0 0
+
+CALL                                        COUNT
+crossarch_trap                                  1
+csops                                           1
+csops_audittoken                                1
+fgetattrlist                                    1
+fork                                            1
+fstatat64                                       1
+getentropy                                      1
+issetugid                                       1
+map_with_linking_np                             1
+objc_bp_assist_cfg_np                           1
+pipe                                            1
+proc_info                                       1
+shm_open                                        1
+thread_selfid                                   1
+write                                           1
+access                                          2
+bsdthread_register                              2
+exit                                            2
+getattrlist                                     2
+getfsstat64                                     2
+getpid                                          2
+getrlimit                                       2
+mmap                                            2
+openat                                          2
+read                                            2
+shared_region_check_np                          2
+write_nocancel                                  2
+csrctl                                          3
+dup                                             3
+fsgetpath                                       3
+fstat64                                         4
+ioctl                                           4
+sysctl                                          4
+__mac_syscall                                   5
+fcntl                                           5
+munmap                                          6
+open                                            7
+stat64                                         11
+close                                          16
+mprotect                                       28
